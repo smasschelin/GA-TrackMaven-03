@@ -35,5 +35,4 @@ data.drop('channel_info', axis = 1, inplace=True)
 FB_and_IG_data = data.loc[(data['channel'] == 'facebook') | (data['channel'] == 'instagram')]
 
 #%%
-
 FB_and_IG_data.to_csv('assets/FB_and_IG_data.csv')
