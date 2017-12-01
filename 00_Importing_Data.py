@@ -35,6 +35,7 @@ data.drop('channel_info', axis = 1, inplace=True)
 data = data.loc[(data['channel'] == 'facebook') | (data['channel'] == 'instagram')]
 
 #%%
+
 # Check and make sure every row in the 'channel type' series has exacly 1 element
 assert data['channel_type'].apply(lambda x: len(x) != 1).sum() == 0
 
