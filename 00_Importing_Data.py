@@ -57,12 +57,11 @@ data['brand_name'] = data['brand'].map(brands)
 
 #%%
 instagram = data[data['channel'] == 'instagram']
+instagram = instagram.reset_index(drop=True)
+facebook  = data[data['channel'] == 'facebook']
 
 
 #%%
-
-instagram = instagram.reset_index(drop=True)
-
 
 # Turning post_id into urls
 
