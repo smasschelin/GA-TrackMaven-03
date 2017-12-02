@@ -12,8 +12,6 @@ import pandas as pd
 # This presumes you have just run the 00_Importing_Data.py file, and that you have
 # the 'facebook' dataframe in your environment.
 
-facebook['content'][0]
-
 #%%
 
 # Assert that all keys in the facebook 'content' column are the same.
@@ -40,3 +38,19 @@ for key in reactions_keys:
     
 #%%
 facebook.isnull().sum()
+
+#%%
+def safe_string_add(*args):
+    string = ''
+    for arg in args:
+        if type(arg) == str:
+            string += ' ' + arg
+    return(string)        
+    
+#%%
+facebook['text'] = [safe_string_add(facebook['media_description'][i],
+         facebook['media_name'][i]) for i in range(facebook.shape[0])]
+    
+#%%
+facebook.drop('content', axis=1, inplace=True)
+facebook.drop('reactions', axis=1, inplace=True)

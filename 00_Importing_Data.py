@@ -75,4 +75,4 @@ instagram.drop(['post_id'], axis=1, inplace=True)
 
 
 #%%
-data.to_csv('assets/FB_and_IG_data.csv')
+# data.to_csv('assets/FB_and_IG_data.csv')

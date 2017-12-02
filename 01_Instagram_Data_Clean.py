@@ -1,17 +1,17 @@
 
 #Subsetting instagram data from the full set.
-instagram = FB_and_IG_data.loc[FB_and_IG_data['type'].isin(['instagram pic', 'instagram vid'])]
-instagram = instagram.reset_index(drop=True)
+#instagram = FB_and_IG_data.loc[FB_and_IG_data['type'].isin(['instagram pic', 'instagram vid'])]
+# instagram = instagram.reset_index(drop=True)
 
 #Getting data from the content column
 instacontent = instagram['content']
-
+#%%
 #Seeing how many image entries we have.
 sum([instacontent[i].keys() == instacontent[0].keys() for i in range(len(instacontent))])
-
+#%%
 #Seeing how many video entries we have.
 sum([instacontent[i].keys() != instacontent[0].keys() for i in range(len(instacontent))])
-
+#%%
 #Splitting Instagram data into seperate image and video frames
 instapics = instagram.loc[(instagram['type'] == 'instagram pic')]
 instapics = instapics.reset_index(drop=True)
