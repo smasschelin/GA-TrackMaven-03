@@ -8,6 +8,12 @@ separating the Facebook data from the full data set. This script cleans data by
 removing/replacing nulls, creating columns out of content dictionaries, and
 other operations necessary to create a well-behaved data set for analysis.
 
+This script assumes the presence of the following:
+    
+    pandas is imported as pd
+    numpy is imported as np
+    FB_and_IG_data is a DataFrame currently in your operating environment
+
 @author: jamesdenney
 """
 
