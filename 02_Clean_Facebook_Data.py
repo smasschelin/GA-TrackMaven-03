@@ -69,6 +69,14 @@ facebook['love_count'] = love_count.values
 facebook['sad_count'] = sad_count.values
 facebook['wow_count'] = wow_count.values
 
+facebook['angry_count'].fillna(0, inplace=True)
+facebook['haha_count'].fillna(0, inplace=True)
+facebook['love_count'].fillna(0, inplace=True)
+facebook['sad_count'].fillna(0, inplace=True)
+facebook['wow_count'].fillna(0, inplace=True)
+
+facebook['urls'].fillna('no_url', inplace=True)
+
 facebook['shares'] = [row['share_count'] for row in facebook.content]
 
 #%% Add reaction column that sums all the likes, angry, haha, love, sad, wow
