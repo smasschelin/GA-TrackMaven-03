@@ -69,13 +69,19 @@ facebook['love_count'] = love_count.values
 facebook['sad_count'] = sad_count.values
 facebook['wow_count'] = wow_count.values
 
+#%% Filling NA values
+
 facebook['angry_count'].fillna(0, inplace=True)
 facebook['haha_count'].fillna(0, inplace=True)
 facebook['love_count'].fillna(0, inplace=True)
 facebook['sad_count'].fillna(0, inplace=True)
 facebook['wow_count'].fillna(0, inplace=True)
-
+facebook['media_caption'].fillna('no caption', inplace=True)
+facebook['media_title'].fillna('no caption', inplace=True)
+facebook['message'].fillna('no message', inplace=True)
 facebook['urls'].fillna('no_url', inplace=True)
+facebook['picture_url'].fillna('no_url', inplace=True)
+facebook['impact'].fillna(0, inplace=True)
 
 facebook['shares'] = [row['share_count'] for row in facebook.content]
 
