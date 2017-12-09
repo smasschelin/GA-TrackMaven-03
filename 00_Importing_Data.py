@@ -43,14 +43,15 @@ data['channel_type'] = data['channel_type'].apply(lambda x: x[0])
 
 #%%
 
-brands = {137314 : 'Conde_Naste_Traveler', 
+brands = {137314 : 'Conde_Nast_Traveler', 
           137329 : 'W_Magazine',
-          137321 : 'Onself',
+          137321 : 'Self',
           137325 : 'Vanity_Fair', 
           137300 : 'Clever', 
           137322 : 'Teen_Vogue', 
           137299 : 'Allure', 
-          137326 : 'Vogue',137316 : 'Glamor'
+          137326 : 'Vogue',
+          137316 : 'Glamour'
          }
 
 data['brand_name'] = data['brand'].map(brands)      
