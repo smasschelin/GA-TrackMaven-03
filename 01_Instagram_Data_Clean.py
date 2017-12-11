@@ -1,31 +1,50 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Dec 03 18:04:00 2017
 
-#Subsetting instagram data from the full set.
+Subsets Instagram data from the full "data" DataFrame. Requires the following:
+    
+    DataFrame named Instagram
+    Libraries in environment: pandas as pd
+
+@author: smasschelin
+"""
+
+#%% Subsets Instagram data from full data DataFrame
+
 #instagram = FB_and_IG_data.loc[FB_and_IG_data['type'].isin(['instagram pic', 'instagram vid'])]
 # instagram = instagram.reset_index(drop=True)
 
-#Getting data from the content column
+# Getting data from the content column
+
 instacontent = instagram['content']
-#%%
-#Seeing how many image entries we have.
+
+#%% Determine number of image and video entries
+
+# images
 sum([instacontent[i].keys() == instacontent[0].keys() for i in range(len(instacontent))])
-#%%
-#Seeing how many video entries we have.
+
+# videos
 sum([instacontent[i].keys() != instacontent[0].keys() for i in range(len(instacontent))])
-#%%
-#Splitting Instagram data into seperate image and video frames
+
+#%% Split Instagram data into separate image and video DataFrames
+
 instapics = instagram.loc[(instagram['type'] == 'instagram pic')]
 instapics = instapics.reset_index(drop=True)
 
 instavids = instagram.loc[(instagram['type'] == 'instagram vid')]
 instavids = instavids.reset_index(drop=True)
-#Setting up seperate DataFrames for picture and video entries
+
+#%% Set up separate DataFrames for picture and video entries
+
 instapicscontent = instapics['content']
 picframe = pd.DataFrame.from_dict(instapicscontent)
 
 instavidscontent = instavids['content']
 vidframe = pd.DataFrame.from_dict(instavidscontent)
 
-#Splitting the picture entries content dictionary into seperate columns based upon keys
+#%% Split picture entries content dictionary into columns based on keys
+
 picframe['caption']  = [x['caption'] for x in instapics['content']]
 picframe['comment_count']  = [x['comment_count'] for x in instapics['content']]
 picframe['filter_name'] = [x['filter_name'] for x in instapics['content']]
@@ -39,7 +58,8 @@ picframe['post_id'] = [x['post_id'] for x in instapics['content']]
 picframe.drop(['content'], axis = 1, inplace = True)
 picframe = picframe.reset_index(drop=True)
 
-#Ditto, but now for the video entries
+#%% Repeat content dictionary split for video entries
+
 vidframe['caption'] = [x['caption'] for x in instavids['content']]
 vidframe['comment_count'] = [x['comment_count'] for x in instavids['content']]
 vidframe['filter_name'] = [x['filter_name'] for x in instavids['content']]
