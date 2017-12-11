@@ -8,6 +8,9 @@ Created on Fri Dec  1 17:32:33 2017
 #%%
 import pandas as pd
 
+facebook = facebook.sample(1000)
+facebook = facebook.reset_index(drop=True)
+
 #%%
 # This presumes you have just run the 00_Importing_Data.py file, and that you have
 # the 'facebook' dataframe in your environment.
@@ -32,9 +35,18 @@ for key in content_keys:
 reactions_keys = list(facebook['reactions'][0].keys())
 
 #%%
-
+def safe_dict_lookup(entry, key, fill=0):
+    try:
+        entry.get(key)
+    except:
+        return(fill)
+#%%
 for key in reactions_keys:
-    facebook[key] = [facebook['reactions'][i] for i in range(facebook.shape[0])]
+    facebook[key] = [facebook.loc[i, 'reactions'].get(key) for i in range(facebook.shape[0])]
+
+facebook.drop('reactions', axis=1, inplace=True)
+facebook.drop('content', axis=1, inplace=True)
+
     
 #%%
 facebook.isnull().sum()
@@ -52,5 +64,4 @@ facebook['text'] = [safe_string_add(facebook['media_description'][i],
          facebook['media_name'][i]) for i in range(facebook.shape[0])]
     
 #%%
-facebook.drop('content', axis=1, inplace=True)
-facebook.drop('reactions', axis=1, inplace=True)
+
