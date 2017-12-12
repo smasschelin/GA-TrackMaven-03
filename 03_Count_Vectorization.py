@@ -23,7 +23,7 @@ from sklearn.model_selection import train_test_split
 #%% Explain function inputs
 
 # REQUIRED INPUTS
-#     df: Single media stream DataFrame to analyze (e.g., Facebook)
+#     df: Single media stream DataFrame to analyze (e.g., Facebook, Instagram)
 # stream: Media portfolio to analyze (e.g., Glamour Magazine)
 #    col: DataFrame column to run count vectorization on ("message", "caption")
 # target: Target column (likes, engagement, impact) to analyze and predict on
@@ -56,8 +56,10 @@ def doCountVectorizer(data, stream, col, target, stop_wds=1, ngram=(1,1), top=25
     
     stopwords = nltk.corpus.stopwords.words('english')
     stopwords.append('http')
-    stopwords.append('asdf') # this removes the placeholder for empty posts
     stopwords.append('nast')
+    stopwords.append('link')
+    stopwords.append('click')
+    stopwords.append('asdf') # this removes the placeholder for empty posts
     
     #%% Initialize count vectorizer
     
@@ -103,5 +105,5 @@ def doCountVectorizer(data, stream, col, target, stop_wds=1, ngram=(1,1), top=25
     
     #%% Return the input number of top phrases
     
-    streamDF.sort_values('frequency', ascending=False)[:top]
+    return streamDF.sort_values('frequency', ascending=False)[:top]
     
