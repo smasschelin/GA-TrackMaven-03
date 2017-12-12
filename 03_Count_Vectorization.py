@@ -23,7 +23,7 @@ from sklearn.model_selection import train_test_split
 #%% Explain function inputs
 
 # REQUIRED INPUTS
-#     df: Single media stream DataFrame to analyze (e.g., Facebook)
+#     df: Single media stream DataFrame to analyze (e.g., Facebook, Instagram)
 # stream: Media portfolio to analyze (e.g., Glamour Magazine)
 #    col: DataFrame column to run count vectorization on ("message", "caption")
 # target: Target column (likes, engagement, impact) to analyze and predict on
@@ -56,9 +56,11 @@ def doCountVectorizer(data, stream, col, target, stop_wds=1, ngram=(1,1), top=25
     
     stopwords = nltk.corpus.stopwords.words('english')
     stopwords.append('http')
-    stopwords.append('asdf') # this removes the placeholder for empty posts
     stopwords.append('nast')
-    
+    stopwords.append('link')
+    stopwords.append('click')
+    stopwords.append('asdf') # this removes the placeholder for empty posts
+        
     #%% Initialize count vectorizer
     
     if stop_wds:
@@ -80,12 +82,16 @@ def doCountVectorizer(data, stream, col, target, stop_wds=1, ngram=(1,1), top=25
     # copy portion of DF, to prevent any unwanted edits to main DF
     df = data[data['brand_name']==stream].copy()
     
+    # create Text column incorporating the input column plus media_title
+    df['text'] = [safe_string_add(df['media_title'][ii],
+         df[col][ii]) for ii in range(df.shape[0])]
+    
     # fill any NAN / NA values with gibberish and add gibberish to stop_words
-    df[col].fillna('asdf', inplace=True)
+    df['text'].fillna('asdf', inplace=True)
     
     #%% Perform train/test split
     
-    X_trn, X_tst, y_trn, y_tst = train_test_split(df[col],df[target],
+    X_trn, X_tst, y_trn, y_tst = train_test_split(df.text,df[target],
                                                   test_size=0.3, random_state=6)
     
     #%% Pass training data through vectorizer
@@ -103,5 +109,15 @@ def doCountVectorizer(data, stream, col, target, stop_wds=1, ngram=(1,1), top=25
     
     #%% Return the input number of top phrases
     
-    streamDF.sort_values('frequency', ascending=False)[:top]
+    return streamDF.sort_values('frequency', ascending=False)[:top]
     
+
+#%% Companion function safe_string_add
+    
+def safe_string_add(*args):
+    # Safely adds multiple strings, ignores non-string inputs.
+    string = ''
+    for arg in args:
+        if type(arg) == str:
+            string += ' ' + arg
+    return(string)
