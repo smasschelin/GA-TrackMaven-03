@@ -11,20 +11,3 @@ Data we will be using is [here](https://s3.amazonaws.com/temp-data-pulls/newdump
 03_Count_Vectorization.py -- Natural Language Processing
 
 Topic_Modeling_Final.ipynb -- An explanation of the Latent Dirichlet Allocation model for topic modeling, plus notes on how to automate the process and some next steps for making predictions based on topic distributions
-
-
-.gitignore	Fixed the gitignore	14 days ago
-00_Importing_Data.py	cleaned 00, added JD-EDA	a day ago
-01_Instagram_Data_Clean.py	script clean-up	a day ago
-02_Clean_Facebook_Data.py	repush FB clean	a day ago
-03_Count_Vectorization.py	CVT edits	16 hours ago
-AWS+-+Uraih+-+Pic+Recognition-Final.py	Final Draft AWS	an hour ago
-AWS+-+Uraih.py	AWS code	3 days ago
-Ben_Scratch.ipynb	Minor changes	11 days ago
-Facebook_Tfidf.py	Intermediate changes	a day ago
-James-EDA.ipynb	CVT push	17 hours ago
-README.md	Consolidated Steves work today	13 days ago
-Steves_EDA2.ipynb	Modeling Functions Added	11 days ago
-Steves_InstagramEDA.ipynb	Updated Steve's EDA	8 minutes ago
-Topic_Modeling_Final.ipynb	Adding final topic modeling notebook	2 minutes ago
-Uraih_EDA.py
