@@ -23,11 +23,12 @@ from sklearn.model_selection import train_test_split
 #%% Explain function inputs
 
 # REQUIRED INPUTS
-#     df: Single media stream DataFrame to analyze (e.g., Facebook, Instagram)
-# stream: Media portfolio to analyze (e.g., Glamour Magazine)
+#     df: Single media stream DataFrame to analyze (e.g., Facebook as "facebook")
+# stream: Media portfolio to analyze (e.g., Glamour Magazine as "Glamour")
 #    col: DataFrame column to run count vectorization on ("message", "caption")
 # target: Target column (likes, engagement, impact) to analyze and predict on
 #           MUST BE A COLUMN TITLE WITH TYPE INT OR FLOAT
+#           example entry: "like_count"
 #
 # OPTIONAL INPUTS
 #  st_wd: binary input that determines whether stop words are included in
