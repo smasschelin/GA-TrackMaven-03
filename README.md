@@ -1,6 +1,6 @@
 # GA-TrackMaven-03
 
-Data we will be using is [here](https://s3.amazonaws.com/temp-data-pulls/newdump.json). Download it into your own 'assets' folder. Since it is a large file lets not actually keep it in GitHub. But our scripts will point to it.
+Data we will be using is [here](https://s3.amazonaws.com/temp-data-pulls/newdump.json).
 
 [00_Importing_Data.py](https://github.com/smasschelin/GA-TrackMaven-03/blob/master/00_Importing_Data.py) - Loads in the JSON, subsets only the FB and IG data, and saves it as a csv in the assets folder.
 
@@ -10,4 +10,6 @@ Data we will be using is [here](https://s3.amazonaws.com/temp-data-pulls/newdump
 
 03_Count_Vectorization.py -- Natural Language Processing
 
-Topic_Modeling_Final.ipynb -- An explanation of the Latent Dirichlet Allocation model for topic modeling, plus notes on how to automate the process and some next steps for making predictions based on topic distributions
+[Topic_Modeling_Final.ipynb](https://github.com/smasschelin/GA-TrackMaven-03/blob/master/Topic_Modeling_Final.ipynb) -- An explanation of the Latent Dirichlet Allocation model for topic modeling, plus notes on how to automate the process and some next steps for making predictions based on topic distributions
+
+[Topic_Modeling_Final.py](https://github.com/smasschelin/GA-TrackMaven-03/blob/master/Topic_Modeling_Final.py) -- Same as above but as plain .py file.
